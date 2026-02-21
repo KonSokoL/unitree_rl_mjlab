@@ -36,6 +36,8 @@ int main(int argc, char** argv)
     // Unitree DDS Config
     unitree::robot::ChannelFactory::Instance()->Init(0, vm["network"].as<std::string>());
 
+    std::cout << "ChannelFactory ok";
+
     init_fsm_state();
 
     FSMState::lowcmd->msg_.mode_machine() = 5; // 29dof
@@ -48,9 +50,19 @@ int main(int argc, char** argv)
     auto fsm = std::make_unique<CtrlFSM>(param::config["FSM"]);
     fsm->start();
 
+    std::cout << "FSM ok";
+
     std::cout << "Press [L2 + Up] to enter FixStand mode.\n";
-    std::cout << "And then press [R2 + A] to start controlling the robot.\n";
-    std::cout << "And then press [R1 + A/B/Y/X] to control the robot dance.\n";
+    std::cout << "Dance mode key combinations: \n";
+    std::cout << "Dance move 1: [R1+Select]"
+    std::cout << "Dance move 2: [R1+X]";
+    std::cout << "Dance move 3: [R1+Y]";
+    std::cout << "Dance move 4: [R1+B]";
+    std::cout << "Dance move 5: [R1+A]";
+
+
+    // std::cout << "And then press [R2 + A] to start controlling the robot.\n";
+    // std::cout << "And then press [R1 + A/B/Y/X] to control the robot dance.\n";
 
     while (true)
     {

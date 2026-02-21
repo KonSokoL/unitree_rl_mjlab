@@ -8,3 +8,8 @@ deploy/robots/go2/build
 deploy/robots/g1/build
 deploy/robots/g1_23dof/build
 deploy/robots/h1_2/build
+
+__pycache__
+*.npz
+*.onnx
+*.onnx.data

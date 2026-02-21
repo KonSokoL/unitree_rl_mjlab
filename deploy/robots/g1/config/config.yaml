@@ -8,8 +8,20 @@ FSM:
       id: 3
       type: RLBase
 
-    Mimic_Dance1_subject2:
+    Mimic_Anim1:
       id: 5
+      type: Mimic
+    Mimic_Anim2:
+      id: 6
+      type: Mimic
+    Mimic_Anim3:
+      id: 7
+      type: Mimic
+    Mimic_Anim4:
+      id: 8
+      type: Mimic
+    Mimic_Anim5:
+      id: 9
       type: Mimic
 
 
@@ -70,13 +82,52 @@ FSM:
 
     policy_dir: config/policy/velocity
 
-
-  Mimic_Dance1_subject2:
+  Mimic_Anim1:
     transitions:
       Passive: LT + B.on_pressed
       Velocity: RT + A.on_pressed
 
-    motion_file: config/policy/mimic/dance1_subject2/params/dance1_subject2.npz
-    policy_dir: config/policy/mimic/dance1_subject2/
+    motion_file: config/policy/mimic/anim1/params/anim1.npz
+    policy_dir: config/policy/mimic/anim1/
+    time_start: 0.0
+    time_end: 1000.0
+
+  Mimic_Anim1:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+
+    motion_file: config/policy/mimic/anim1/params/anim1.npz
+    policy_dir: config/policy/mimic/anim1/
+    time_start: 0.0
+    time_end: 1000.0
+
+  Mimic_Anim1:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+
+    motion_file: config/policy/mimic/anim1/params/anim1.npz
+    policy_dir: config/policy/mimic/anim1/
+    time_start: 0.0
+    time_end: 1000.0
+
+  Mimic_Anim1:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+
+    motion_file: config/policy/mimic/anim1/params/anim1.npz
+    policy_dir: config/policy/mimic/anim1/
+    time_start: 0.0
+    time_end: 1000.0
+
+  Mimic_Anim1:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+
+    motion_file: config/policy/mimic/anim1/params/anim1.npz
+    policy_dir: config/policy/mimic/anim1/
     time_start: 0.0
     time_end: 1000.0
