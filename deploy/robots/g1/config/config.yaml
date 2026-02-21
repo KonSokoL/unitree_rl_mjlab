@@ -17,12 +17,12 @@ FSM:
     Mimic_Anim3:
       id: 7
       type: Mimic
-    Mimic_Anim4:
-      id: 8
-      type: Mimic
-    Mimic_Anim5:
-      id: 9
-      type: Mimic
+    # Mimic_Anim4:
+    #   id: 8
+    #   type: Mimic
+    # Mimic_Anim5:
+    #   id: 9
+    #   type: Mimic
 
 
   Passive:
@@ -78,10 +78,10 @@ FSM:
   Velocity:
     transitions: 
       Passive: LT + B.on_pressed
-      Mimic_Anim1: RB + select.on_pressed
+      Mimic_Anim1: RB + back.on_pressed
       Mimic_Anim2: RB + X.on_pressed
       Mimic_Anim3: RB + Y.on_pressed
-      Mimic_Anim4: RB + B.on_pressed
+      # Mimic_Anim4: RB + B.on_pressed
 
     policy_dir: config/policy/velocity
 
@@ -95,42 +95,42 @@ FSM:
     time_start: 0.0
     time_end: 1000.0
 
-  Mimic_Anim1:
+  Mimic_Anim2:
     transitions:
       Passive: LT + B.on_pressed
       Velocity: RT + A.on_pressed
 
-    motion_file: config/policy/mimic/anim1/params/anim1.npz
-    policy_dir: config/policy/mimic/anim1/
+    motion_file: config/policy/mimic/anim2/params/anim2.npz
+    policy_dir: config/policy/mimic/anim2/
     time_start: 0.0
     time_end: 1000.0
 
-  Mimic_Anim1:
+  Mimic_Anim3:
     transitions:
       Passive: LT + B.on_pressed
       Velocity: RT + A.on_pressed
 
-    motion_file: config/policy/mimic/anim1/params/anim1.npz
-    policy_dir: config/policy/mimic/anim1/
+    motion_file: config/policy/mimic/anim3/params/anim3.npz
+    policy_dir: config/policy/mimic/anim3/
     time_start: 0.0
     time_end: 1000.0
 
-  Mimic_Anim1:
-    transitions:
-      Passive: LT + B.on_pressed
-      Velocity: RT + A.on_pressed
+  # Mimic_Anim4:
+  #   transitions:
+  #     Passive: LT + B.on_pressed
+  #     Velocity: RT + A.on_pressed
 
-    motion_file: config/policy/mimic/anim1/params/anim1.npz
-    policy_dir: config/policy/mimic/anim1/
-    time_start: 0.0
-    time_end: 1000.0
+  #   motion_file: config/policy/mimic/anim4/params/anim4.npz
+  #   policy_dir: config/policy/mimic/anim4/
+  #   time_start: 0.0
+  #   time_end: 1000.0
 
-  Mimic_Anim1:
-    transitions:
-      Passive: LT + B.on_pressed
-      Velocity: RT + A.on_pressed
+  # Mimic_Anim5:
+  #   transitions:
+  #     Passive: LT + B.on_pressed
+  #     Velocity: RT + A.on_pressed
 
-    motion_file: config/policy/mimic/anim1/params/anim1.npz
-    policy_dir: config/policy/mimic/anim1/
-    time_start: 0.0
-    time_end: 1000.0
+  #   motion_file: config/policy/mimic/anim5/params/anim5.npz
+  #   policy_dir: config/policy/mimic/anim5/
+  #   time_start: 0.0
+  #   time_end: 1000.0
