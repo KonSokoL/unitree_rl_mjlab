@@ -53,12 +53,12 @@ int main(int argc, char** argv)
     std::cout << "FSM ok";
 
     std::cout << "Press [L2 + Up] to enter FixStand mode.\n";
-    std::cout << "Dance mode key combinations: \n";
-    std::cout << "Dance move 1: [R1+Select]"
-    std::cout << "Dance move 2: [R1+X]";
-    std::cout << "Dance move 3: [R1+Y]";
-    std::cout << "Dance move 4: [R1+B]";
-    std::cout << "Dance move 5: [R1+A]";
+    std::cout << "Dance mode key combinations:\n";
+    std::cout << "Dance move 1: [R1+Select]\n";
+    std::cout << "Dance move 2: [R1+X]\n";
+    std::cout << "Dance move 3: [R1+Y]\n";
+    std::cout << "Dance move 4: [R1+B]\n";
+    std::cout << "Dance move 5: [R1+A]\n";
 
 
     // std::cout << "And then press [R2 + A] to start controlling the robot.\n";
