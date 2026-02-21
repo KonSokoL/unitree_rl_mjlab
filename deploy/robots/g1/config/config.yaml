@@ -78,7 +78,10 @@ FSM:
   Velocity:
     transitions: 
       Passive: LT + B.on_pressed
-      Mimic_Dance1_subject2: RB + A.on_pressed
+      Mimic_Anim1: RB + select.on_pressed
+      Mimic_Anim2: RB + X.on_pressed
+      Mimic_Anim3: RB + Y.on_pressed
+      Mimic_Anim4: RB + B.on_pressed
 
     policy_dir: config/policy/velocity
 
