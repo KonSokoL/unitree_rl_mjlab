@@ -17,9 +17,9 @@ FSM:
     Mimic_Anim3:
       id: 7
       type: Mimic
-    # Mimic_Anim4:
-    #   id: 8
-    #   type: Mimic
+    Mimic_Anim4:
+      id: 8
+      type: Mimic
     # Mimic_Anim5:
     #   id: 9
     #   type: Mimic
@@ -78,10 +78,10 @@ FSM:
   Velocity:
     transitions: 
       Passive: LT + B.on_pressed
-      Mimic_Anim1: RB + back.on_pressed
-      Mimic_Anim2: RB + X.on_pressed
-      Mimic_Anim3: RB + Y.on_pressed
-      # Mimic_Anim4: RB + B.on_pressed
+      Mimic_Anim1: RB + X.on_pressed
+      Mimic_Anim2: RB + Y.on_pressed
+      Mimic_Anim3: RB + B.on_pressed
+      Mimic_Anim4: RB + A.on_pressed
 
     policy_dir: config/policy/velocity
 
@@ -115,22 +115,12 @@ FSM:
     time_start: 0.0
     time_end: 1000.0
 
-  # Mimic_Anim4:
-  #   transitions:
-  #     Passive: LT + B.on_pressed
-  #     Velocity: RT + A.on_pressed
+  Mimic_Anim4:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
 
-  #   motion_file: config/policy/mimic/anim4/params/anim4.npz
-  #   policy_dir: config/policy/mimic/anim4/
-  #   time_start: 0.0
-  #   time_end: 1000.0
-
-  # Mimic_Anim5:
-  #   transitions:
-  #     Passive: LT + B.on_pressed
-  #     Velocity: RT + A.on_pressed
-
-  #   motion_file: config/policy/mimic/anim5/params/anim5.npz
-  #   policy_dir: config/policy/mimic/anim5/
-  #   time_start: 0.0
-  #   time_end: 1000.0
+    motion_file: config/policy/mimic/anim4/params/anim4.npz
+    policy_dir: config/policy/mimic/anim4/
+    time_start: 0.0
+    time_end: 1000.0
