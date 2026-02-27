@@ -20,9 +20,6 @@ FSM:
     Mimic_Anim4:
       id: 8
       type: Mimic
-    # Mimic_Anim5:
-    #   id: 9
-    #   type: Mimic
 
 
   Passive:
