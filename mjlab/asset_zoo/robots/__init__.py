@@ -22,3 +22,10 @@ from mjlab.asset_zoo.robots.unitree_h1_2.h1_2_constants import (
 from mjlab.asset_zoo.robots.unitree_go2.go2_constants import (
   get_go2_robot_cfg as get_go2_robot_cfg,
 )
+
+from mjlab.asset_zoo.robots.unitree_h1.h1_constants import (
+  H1_ACTION_SCALE as H1_ACTION_SCALE,
+)
+from mjlab.asset_zoo.robots.unitree_h1.h1_constants import (
+  get_h1_robot_cfg as get_h1_robot_cfg,
+)

@@ -7,7 +7,7 @@ from mjlab.rl import (
 )
 
 
-def unitree_h1_2_ppo_runner_cfg() -> RslRlOnPolicyRunnerCfg:
+def unitree_h1_ppo_runner_cfg() -> RslRlOnPolicyRunnerCfg:
   """Create RL runner configuration for Unitree H1 velocity task."""
   return RslRlOnPolicyRunnerCfg(
     policy=RslRlPpoActorCriticCfg(
