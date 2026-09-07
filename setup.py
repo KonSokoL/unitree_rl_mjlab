@@ -10,7 +10,7 @@ INSTALL_REQUIRES = [
     "torch>=2.7.0",
     "torchrunx>=0.3.4",
     "warp-lang>=1.11.0.dev20251211",
-    "mujoco-warp",
+    "mujoco-warp==3.5.0",
     "mujoco>=3.4.0",
     "trimesh>=4.8.3",
     "viser>=1.0.16",

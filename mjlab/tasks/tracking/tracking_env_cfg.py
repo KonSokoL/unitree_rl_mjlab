@@ -278,6 +278,12 @@ def make_tracking_env_cfg() -> ManagerBasedRlEnvCfg:
         "body_names": (),  # Set per-robot.
       },
     ),
+    "head_collision": TerminationTermCfg(
+      func=mdp.illegal_head_collision,
+      params={
+        "sensor_name": "head_collision"
+      }
+    )
   }
 
   ##

@@ -8,6 +8,7 @@ from mjlab.utils.lab_api.math import quat_apply_inverse
 
 from .commands import MotionCommand
 from .rewards import _get_body_indexes
+from mjlab.sensor import ContactSensor
 
 if TYPE_CHECKING:
   from mjlab.entity import Entity
@@ -84,3 +85,8 @@ def bad_motion_body_pos_z_only(
     - command.robot_body_pos_w[:, body_indexes, -1]
   )
   return torch.any(error > threshold, dim=-1)
+
+def illegal_head_collision(env: ManagerBasedRlEnv, sensor_name: str) -> torch.Tensor:
+  sensor: ContactSensor = env.scene[sensor_name]
+  assert sensor.data.found is not None
+  return torch.any(sensor.data.found, dim=-1)

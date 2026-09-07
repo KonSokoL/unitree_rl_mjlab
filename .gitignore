@@ -13,3 +13,6 @@ __pycache__
 *.npz
 *.onnx
 *.onnx.data
+
+*.csv
+.vscode

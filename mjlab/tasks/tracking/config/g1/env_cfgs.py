@@ -21,6 +21,19 @@ def unitree_g1_flat_tracking_env_cfg(
 
   cfg.scene.entities = {"robot": get_g1_robot_cfg()}
 
+  head_collision_cfg = ContactSensorCfg(
+    name="head_collision",
+    primary=ContactMatch(
+      mode="geom",
+      pattern="head_collision",
+      entity="robot",
+    ),
+    secondary=ContactMatch(mode="body", pattern="terrain"),
+    fields=("found",),
+    reduce="none",
+    num_slots=1,
+  )
+
   self_collision_cfg = ContactSensorCfg(
     name="self_collision",
     primary=ContactMatch(mode="subtree", pattern="pelvis", entity="robot"),
@@ -29,7 +42,7 @@ def unitree_g1_flat_tracking_env_cfg(
     reduce="none",
     num_slots=1,
   )
-  cfg.scene.sensors = (self_collision_cfg,)
+  cfg.scene.sensors = (self_collision_cfg, head_collision_cfg,)
 
   joint_pos_action = cfg.actions["joint_pos"]
   assert isinstance(joint_pos_action, JointPositionActionCfg)
