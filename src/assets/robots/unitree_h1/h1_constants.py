@@ -4,7 +4,7 @@ from pathlib import Path
 
 import mujoco
 
-from mjlab import MJLAB_SRC_PATH
+from src import SRC_PATH
 from mjlab.actuator import BuiltinPositionActuatorCfg
 from mjlab.entity import EntityArticulationInfoCfg, EntityCfg
 from mjlab.utils.os import update_assets
@@ -15,7 +15,7 @@ from mjlab.utils.spec_config import CollisionCfg
 ##
 
 H1_XML: Path = (
-  MJLAB_SRC_PATH / "asset_zoo" / "robots" / "unitree_h1" / "xmls" / "h1.xml"
+  SRC_PATH / "assets" / "robots" / "unitree_h1" / "xmls" / "h1.xml"
 )
 assert H1_XML.exists()
 

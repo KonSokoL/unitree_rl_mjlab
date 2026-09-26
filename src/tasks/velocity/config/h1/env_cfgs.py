@@ -1,6 +1,6 @@
 """Unitree H1 velocity environment configuration"""
 
-from mjlab.asset_zoo.robots import (
+from src.assets.robots import (
   H1_ACTION_SCALE,
   get_h1_robot_cfg,
 )
@@ -9,10 +9,10 @@ from mjlab.envs import mdp as envs_mdp
 from mjlab.envs.mdp.actions import JointPositionActionCfg
 from mjlab.managers.event_manager import EventTermCfg
 from mjlab.managers.reward_manager import RewardTermCfg
-from mjlab.sensor import ContactMatch, ContactSensorCfg
+from mjlab.sensor import ContactMatch, ContactSensorCfg, RayCastSensorCfg
 from mjlab.tasks.velocity import mdp
 from mjlab.tasks.velocity.mdp import UniformVelocityCommandCfg
-from mjlab.tasks.velocity.velocity_env_cfg import make_velocity_env_cfg
+from src.tasks.velocity.velocity_env_cfg import make_velocity_env_cfg
 
 
 def unitree_h1_rough_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
@@ -20,6 +20,12 @@ def unitree_h1_rough_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
   cfg = make_velocity_env_cfg()
 
   cfg.scene.entities = {"robot": get_h1_robot_cfg()}
+
+  for sensor in cfg.scene.sensors or ():
+      if sensor.name == "terrain_scan":
+        assert isinstance(sensor, RayCastSensorCfg)
+        sensor.frame.name = "pelvis"
+  
 
   site_names = ("left_foot", "right_foot")
 
@@ -115,7 +121,7 @@ def unitree_h1_rough_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
     # Effectively infinite episode length.
     cfg.episode_length_s = int(1e9)
 
-    cfg.observations["policy"].enable_corruption = False
+    cfg.observations["actor"].enable_corruption = False
     cfg.events.pop("push_robot", None)
     cfg.events["randomize_terrain"] = EventTermCfg(
       func=envs_mdp.randomize_terrain,
@@ -137,13 +143,23 @@ def unitree_h1_flat_env_cfg(play: bool = False) -> ManagerBasedRlEnvCfg:
   """Create Unitree H1 flat terrain velocity configuration."""
   cfg = unitree_h1_rough_env_cfg(play=play)
 
+  cfg.sim.njmax = 300
+  cfg.sim.mujoco.ccd_iterations = 50
+  cfg.sim.contact_sensor_maxmatch = 64
+  cfg.sim.nconmax = None
+
   # Switch to flat terrain.
   assert cfg.scene.terrain is not None
   cfg.scene.terrain.terrain_type = "plane"
   cfg.scene.terrain.terrain_generator = None
 
-  # Disable terrain curriculum.
-  assert "terrain_levels" in cfg.curriculum
-  del cfg.curriculum["terrain_levels"]
+  # Remove raycast sensor and height scan (no terrain to scan).
+  cfg.scene.sensors = tuple(
+    s for s in (cfg.scene.sensors or ()) if s.name != "terrain_scan"
+  )
+  del cfg.observations["actor"].terms["height_scan"]
+  del cfg.observations["critic"].terms["height_scan"]
+
+  cfg.curriculum.pop("terrain_levels", None)
 
   return cfg
